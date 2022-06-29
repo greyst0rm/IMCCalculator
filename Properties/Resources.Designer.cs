@@ -69,5 +69,15 @@ namespace IMCalculator.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_tela_2022_06_28_213748 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de tela 2022-06-28 213748", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

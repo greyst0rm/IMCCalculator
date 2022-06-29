@@ -24,48 +24,50 @@ namespace IMCalculator
 
         private void btbCalcular_Click(object sender, EventArgs e)
         {
-            double n1 = 0;
-            double n2 = 0;
-            double resultado = 0;
-            if (txtNumero1.Text != "" && txtNumero2.Text != "")
+            double peso = 0;
+            double altura = 0;
+            double imc = 0;
+            if (txtPeso.Text != "" && txtAltura.Text != "")
             {
-                n1 = double.Parse(txtNumero1.Text);
-                n2 = double.Parse(txtNumero2.Text);
-            }
-
-            // Verificar qual está marcado:
-            if (rbSomar.Checked)
-            {
-                resultado = n1 + n2;
-            }
-            else if (rbSubtrair.Checked)
-            {
-                resultado = n1 - n2;
-            }
-            else if (rbMultiplicacao.Checked)
-            {
-                resultado = n1 * n2;
-            }
-            else if (rbDividir.Checked)
-            {
-                if (n2 == 0)
-                {
-                    MessageBox.Show("Impossível dividir por zero");
-                }
-                else
-                {
-                    resultado = n1 / n2;
-                }
+                peso = double.Parse(txtPeso.Text);
+                altura = double.Parse(txtAltura.Text);
+                imc = peso / (altura * altura);
 
 
+            }
+            imc = peso / Math.Pow(altura, 2);
+
+            if (imc <= 18.5)
+            {
+                txtIMC.Text = imc.ToString();
+                lblResultado.Text = "Abaixo do peso.";
+
+            }
+            else if (imc > 18.5 && imc <= 24.9)
+            {
+                txtIMC.Text = imc.ToString();
+                lblResultado.Text = "Peso ideal.";
+            }
+            else if (imc > 25 && imc <= 29.9)
+            {
+                txtIMC.Text = imc.ToString();
+                lblResultado.Text = "Levemente acima do peso.";
+            }
+            else if (imc > 30 && imc <= 34.9)
+            {
+                txtIMC.Text = imc.ToString();
+                lblResultado.Text = "Obesidade primeiro grau.";
+            }
+            else if (imc < 35 && imc <= 39.9)
+            {
+                txtIMC.Text = imc.ToString();
+                lblResultado.Text = "Obesidade segundo grau ou severa.";
             }
             else
             {
-                MessageBox.Show("Escolha uma opção, dude!");
+                txtIMC.Text = imc.ToString();
+                lblResultado.Text = "Obesidade terceiro grau ou mórbida.";
             }
-
-            // Mostrar o valor no lblResultado:
-            lblResultado.Text = resultado.ToString();
         }
     }
 }
